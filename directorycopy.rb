@@ -1,11 +1,25 @@
 def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
+  puts "Please enter the name of the first student"
   students = []
   name = gets.chomp
   while !name.empty? do
-    students << {name: name, cohort: :november, grade: 80}
+    while true do
+      puts "Please enter cohort of student"
+      cohort = gets.chomp
+      if cohort == "november" || cohort == "december"
+        break
+      elsif cohort == ""
+        cohort = "default"
+        break
+      else 
+        cohort.to_sym!
+        puts "Invalid input, try again"
+      end
+    end
+    students << {name: name, cohort: cohort, grade: 80}
     puts "Now we have #{students.count} students"
+    puts "Please enter the name of the next student"
+    puts "To finish, just hit return again"
     name = gets.chomp
   end
   students
