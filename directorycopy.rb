@@ -1,31 +1,29 @@
-students = [
-  {name: "Dr. Hannibal Lecter", cohort: :november},
-  {name: "Darth Vader", cohort: :december},
-  {name: "Nurse Ratched", cohort: :december},
-  {name: "Michael Corleone", cohort: :november},
-  {name: "Alex DeLarge", cohort: :november},
-  {name: "The Wicked Witch of the West", cohort: :november},
-  {name: "Terminator", cohort: :december},
-  {name: "Freddy Krueger", cohort: :december},
-  {name: "The Joker", cohort: :november},
-  {name: "Joffrey Baratheon", cohort: :november},
-  {name: "Norman Bates", cohort: :november}
-]
-
-def print_header
-  puts "The students of Villains Academy".center(100)
-  puts "-------------".center(100)
+def input_students
+  puts "Please enter the names of the students"
+  puts "To finish, just hit return twice"
+  students = []
+  name = gets.chomp
+  while !name.empty? do
+    students << {name: name, cohort: :november}
+    if students.count == 1
+      puts "Now we have #{students.count} student"
+      name = gets.chomp
+    else
+      puts "Now we have #{students.count} students"
+      name = gets.chomp
+    end
+  end
+  students
 end
 
-def print_by_cohort(students)
-  values = students.map { |student| [student["name"], student[:cohort]]}.uniq
-  puts "which of these cohorts would you like to display"
-  puts values
-  choice = gets.chomp
+def print_header
+  puts "The students of Villains Academy"
+  puts "-------------"
+end
+
+def print(students)
   students.each do |student|
-    if student[:cohort] == choice.to_sym
-      puts student[:name]
-    end
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
@@ -33,5 +31,7 @@ def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
 
-
-print_by_cohort(students)
+students = input_students
+print_header
+print(students)
+print_footer(students)
