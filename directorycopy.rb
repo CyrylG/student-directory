@@ -2,15 +2,18 @@ def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   students = []
-  name = gets.chomp
+  name = gets
+  name.strip!
   while !name.empty? do
     students << {name: name, cohort: :november}
     if students.count == 1
       puts "Now we have #{students.count} student"
-      name = gets.chomp
+      name = gets
+      name.strip!
     else
       puts "Now we have #{students.count} students"
-      name = gets.chomp
+      name = gets
+      name.strip!
     end
   end
   students
