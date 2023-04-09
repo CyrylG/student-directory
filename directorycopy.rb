@@ -76,8 +76,10 @@ def interactive_menu
 end
 
 def save_students
+  puts "Which file should the students be saved to?"
+  file_name = STDIN.gets.chomp
   # open the file for writing
-  file = File.open("students.csv", "w")
+  file = File.open(file_name, "w")
   # iterate over the array of students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
@@ -89,7 +91,9 @@ def save_students
 end
 
 def load_students(filename = "students.csv")
-  file = File.open("students.csv", "r")
+  puts "Which file would you like to load?"
+  file_name = STDIN.gets.chomp
+  file = File.open(file_name, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
     add_student_to_array(name, cohort)
