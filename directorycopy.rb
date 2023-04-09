@@ -18,6 +18,7 @@ def input_students
       name = STDIN.gets.chomp
     end
   end
+  puts "Successfully input students!"
 end
 
 def print_header
@@ -60,6 +61,7 @@ def process(selection)
   when "4"
     load_students
   when "9"
+    puts "See you next time!"
     exit
   else
     puts "I don't know what you mean, try again"
@@ -83,6 +85,7 @@ def save_students
     file.puts csv_line
   end
   file.close
+  puts "Students saved successfully!"
 end
 
 def load_students(filename = "students.csv")
@@ -92,6 +95,7 @@ def load_students(filename = "students.csv")
     add_student_to_array(name, cohort)
   end
   file.close
+  puts "Students loaded successfully!"
 end
 
 def try_load_students
@@ -111,3 +115,4 @@ def try_load_students
 end
 
 try_load_students
+interactive_menu
