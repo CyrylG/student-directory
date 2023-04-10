@@ -114,5 +114,8 @@ def try_load_students
   end
 end
 
-try_load_students
-interactive_menu
+def print_source_code
+  system("cat #{__FILE__}")
+end
+
+print_source_code
